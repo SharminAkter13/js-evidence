@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+  </head>
+  <body>
+    <div>
+      <form action="#" name="form"  style="padding: 60px; width: 500px; height: 200px; margin: 30px auto; background-color: rgba(206, 178, 233, 0.944); border-radius: 5px ;">
+        <fieldset>
+          <legend>Form</legend>
+          Name &nbsp; :
+          <input type="text" name="fn" /><br /><br />
+          Contact:
+          <input type="number" name="fc" /><br /><br />
+
+          Address:
+          <input type="text" name="fa" /><br /><br />
+          <input type="button"  onclick="My_form()" value="submit" />
+          <input type="button" value="reset " />
+        </fieldset>
+      </form>
+
+      <script>
+        function My_form() {
+          var n = document.form.fn.value;
+          var c = document.form.fc.value;
+          var a = document.form.fa.value;
+          p = open("", "", "width=400, height=400");
+          
+          with(p.document){
+            write("Name: "+n+"<br>");
+            write("Contact: "+c+"<br>");
+            write("Address: "+a+"<br>");
+          }
+        }
+      </script>
+    </div>
+  </body>
+</html>
