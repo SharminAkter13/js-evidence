@@ -30,7 +30,7 @@ function chname(){
     return true;
 }
 
-function form_window(){
+function f_window(){
     var title = "Title";
     var name =document.f.tname.value;
         var contact =document.f.contact.value;
@@ -61,7 +61,7 @@ function form_window(){
      with(a.document){
      write("<html>");
      write("<head><title>"+title+"</title></head>");
-     write("<body style='background-color:red'>");
+     write("<body style='background-color:lightblue; font-weight: bold'>");
      write("<div style='border:1px solid gray'>Name:"+name+"<br/>");
      write("Address:"+address+"<br/>");
      write("Session:"+session+"<br/>");
