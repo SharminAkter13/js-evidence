@@ -21,24 +21,25 @@
 
 <body>
     <div>
-        <form action="">
+        <form action="#" name="f">
             <fieldset>
                 <legend style="font-size: 16pt; text-align: center; font-weight: bolder; color: brown;">Form</legend>
                 Name: <br>
-                <input type="text">
+                <input type="text" name="tname" id="tname" onblur="chname()">
+                <span id="emailmsg" class="d-inline-block"></span>
                 <br><br>
                 Email:<br>
                 <input type="email" id="email" name="email" onblur="chEmail()">
                 <span id="emailmsg" class="d-inline-block"></span>
                 <br><br>
                 Contact:<br>
-                <input type="number">
+                <input type="number" name="contact">
                 <br><br>
                 Address: <br>
                 <textarea name="address" id="address"></textarea>
                 <br><br>
                 Session: &nbsp;
-                <select name="session" id="sub">
+                <select name="session" >
                     <option value="">2020-21</option>
                     <option value="">2021-22</option>
                     <option value="">2022-23</option>
@@ -46,13 +47,13 @@
                 </select>
                 <br><br>
                 Gender:
-                <input type="radio" name="gen">Male
-                <input type="radio" name="gen">Female
+                <input type="radio" name="gen" value="Male">Male
+                <input type="radio" name="gen" value="Female">Female
                 <br><br>
                 Subject:
-                <input type="checkbox" name="sub">English
-                <input type="checkbox" name="sub">Bengali
-                <input type="checkbox" name="sub">Arabic
+                <input type="checkbox" name="sub" value="English">English
+                <input type="checkbox" name="sub" value="Bengali">Bengali
+                <input type="checkbox" name="sub" value="Arabic">Arabic
 
                 <br><br>
                 <input type="button" value="Submit" onclick="" style="background-color: brown; color: aliceblue;font-weight: bolder; border-radius: 5px;">
