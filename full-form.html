@@ -13,6 +13,7 @@
             border-radius: 10px;
             padding: 10px;
             font-weight: bold;
+            margin: 20px auto;
         }
 
     </style>
@@ -27,7 +28,8 @@
                 <input type="text">
                 <br><br>
                 Email:<br>
-                <input type="email">
+                <input type="email" id="email" name="email" onblur="chEmail()">
+                <span id="emailmsg" class="d-inline-block"></span>
                 <br><br>
                 Contact:<br>
                 <input type="number">
@@ -59,6 +61,7 @@
         </form>
 
     </div>
+    <script src="f-script.js"></script>
 </body>
 
 </html>
