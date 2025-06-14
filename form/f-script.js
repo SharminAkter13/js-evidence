@@ -19,11 +19,7 @@ function f_window() {
     }
   }
 
-  let p = window.open(
-    " ",
-    "",
-    "width=400,height=400,left=300,top=200,resizable=yes"
-  );
+  let p = open(" ", "", "width=400,height=400,left=300,top=200,resizable=yes");
 
   with (p.document) {
     write("<html><head><title>" + title + "</title></head>");
@@ -37,5 +33,6 @@ function f_window() {
     write("Gender: " + gender + "<br><br>");
     write("Subject: " + subject.join(", ") + "<br><br>");
     write("</body></html>");
+    close();
   }
 }
