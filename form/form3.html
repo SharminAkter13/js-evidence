@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form With Open Window</title>
+    <style>
+      div {
+        background-color: rgb(189, 245, 245);
+        width: 350px;
+        height: 430px;
+        padding: 10px;
+        margin: 20px auto;
+        border-radius: 10px;
+        font-weight: bold;
+      }
+      legend {
+        text-align: center;
+        font-size: 15pt;
+        font-weight: bolder;
+      }
+      fieldset {
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <form action="#" name="f">
+        <fieldset>
+          <legend>FORM</legend>
+          Name: <br /><br />
+          <input
+            type="text"
+            name="fName"
+            value=""
+            onblur="chEmail()"
+            placeholder="Please enter your name"
+          />
+          <br /><br />
+          Email: <br /><br />
+          <input
+            type="email"
+            name="fEmail"
+            value=""
+            onblur="chEmail()"
+            placeholder="Please enter your email"
+          />
+          <br /><br />
+          Address:<br /><br />
+          <textarea
+            name="faddress"
+            id="faddress"
+            placeholder="Please enter your name"
+          ></textarea>
+          <br /><br />
+          Round: &nbsp;
+          <select name="fround" id="round">
+            <option value="Round-65">Round-65</option>
+            <option value="Round-64">Round-64</option>
+            <option value="Round-63">Round-63</option>
+          </select>
+          <br /><br />
+          Gender:
+          <input type="radio" name="gender" id="gender" />Male
+          <input type="radio" name="gender" id="gender" />Feamle <br /><br />
+          Subject:
+          <input type="checkbox" name="sub" id="sub" />HTML
+          <input type="checkbox" name="sub" id="sub" />JAVASCRIPT
+          <input type="checkbox" name="sub" id="sub" />PHP <br /><br />
+          <input
+            type="button"
+            value="Submit"
+            onclick="f_window()"
+            style="
+              background-color: rgb(9, 243, 243);
+              color: rgb(1, 17, 31);
+              font-weight: bold;
+              border-radius: 5px;
+            "
+          />
+        </fieldset>
+      </form>
+    </div>
+    <script src="f-script.js"></script>
+  </body>
+</html>
