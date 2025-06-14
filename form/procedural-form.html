@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form With Open Window</title>
+    <style>
+      div {
+        background-color: rgb(195, 211, 247);
+        width: 350px;
+        height: 550px;
+        padding: 10px;
+        margin: 20px auto;
+        border-radius: 10px;
+        font-weight: bold;
+      }
+      legend {
+        text-align: center;
+        font-size: 15pt;
+        font-weight: bolder;
+      }
+      fieldset {
+        border-radius: 10px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      textarea,
+      select {
+        width: calc(100% - 20px);
+        padding: 8px 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      input[type="radio"],
+      input[type="checkbox"] {
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <form name="f">
+        <fieldset>
+          <legend>FORM</legend>
+          Name: <br /><br />
+
+          <input
+            type="text"
+            name="fName"
+            placeholder="Please enter your name"
+          />
+          <br /><br />
+          Email: <br /><br />
+
+          <input
+            type="email"
+            name="fEmail"
+            placeholder="Please enter your email"
+          />
+          <br /><br />
+          Address:<br /><br />
+          <textarea
+            name="faddress"
+            id="faddress"
+            placeholder="Please enter your address"
+          ></textarea>
+          <br /><br />
+          Round: &nbsp;
+          <select name="fround" id="round">
+            <option value="Round-65">Round-65</option>
+            <option value="Round-64">Round-64</option>
+            <option value="Round-63">Round-63</option>
+          </select>
+          <br /><br />
+          Gender:
+          <input type="radio" name="gender" value="Male" />Male
+          <input type="radio" name="gender" value="Female" />Female <br /><br />
+          Subject:
+          <input type="checkbox" name="sub" value="HTML" />HTML
+          <input type="checkbox" name="sub" value="JAVASCRIPT" />JAVASCRIPT
+          <input type="checkbox" name="sub" value="PHP" />PHP <br /><br />
+          <input
+            type="button"
+            value="Submit"
+            onclick="f_window()"
+            style="
+              background-color: rgb(136, 161, 243);
+              color: rgb(1, 17, 31);
+              font-weight: bold;
+              border-radius: 5px;
+              padding: 8px 15px; /* Added padding for better button look */
+              cursor: pointer; /* Indicate it's clickable */
+            "
+          />
+        </fieldset>
+      </form>
+    </div>
+    <script>
+      function f_window() {
+        var title = "Form Details";
+        var name = document.f.fName.value;
+        var email = document.f.fEmail.value;
+        var address = document.f.faddress.value;
+        var round = document.f.fround.value;
+        var gender = "";
+        var subject = [];
+
+        for (let i = 0; i < document.f.gender.length; i++) {
+          if (document.f.gender[i].checked) {
+            gender = document.f.gender[i].value;
+            break;
+          }
+        }
+
+        // Loop through subject checkboxes to find all checked ones
+        for (let j = 0; j < document.f.sub.length; j++) {
+          if (document.f.sub[j].checked) {
+            subject.push(document.f.sub[j].value);
+          }
+        }
+
+        // Open a new window
+        let p = open(
+          " ",
+          "",
+          "width=400,height=400,left=300,top=200,resizable=yes"
+        );
+
+        with (p.document) {
+          write("<html><head><title>" + title + "</title></head>");
+          write(
+            "<body style='background-color: rgb(136, 161, 243);  padding: 20px;'>"
+          );
+          write(
+            "<div style='border:1px solid gray; padding:10px; background-color:rgb(195, 211, 247); width:300px; height:300px; margin:20px auto;'>"
+          );
+          write("Name: " + name + "<br><br>");
+          write("Email: " + email + "<br><br>");
+          write("Address: " + address + "<br><br>");
+          write("Round: " + round + "<br><br>");
+          write("Gender: " + gender + "<br><br>");
+          write(
+            "Subject: " +
+              (subject.length > 0 ? subject.join(", ") : "None selected") +
+              "<br><br>"
+          );
+          write("</body></html>");
+          close();
+        }
+      }
+    </script>
+  </body>
+</html>
