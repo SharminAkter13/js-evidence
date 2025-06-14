@@ -7,15 +7,35 @@ function f_window() {
   var gender = "";
   var subject = [];
 
-  for (i = 0; i <= document.f.gender.length; i++) {
+  for (i = 0; i < document.f.gender.length; i++) {
     if (document.f.gender[i].checked) {
       gender = document.f.gender[i].value;
     }
   }
 
-  for (i = 0; i <= document.f.sub.length; i++) {
-    if (document.f.sub[i].checked) {
-      subject = document.f.sub[i].value;
+  for (j = 0; j < document.f.sub.length; j++) {
+    if (document.f.sub[j].checked) {
+      subject.push(document.f.sub[j].value);
     }
+  }
+
+  let p = window.open(
+    " ",
+    "",
+    "width=400,height=400,left=300,top=200,resizable=yes"
+  );
+
+  with (p.document) {
+    write("<html><head><title>" + title + "</title></head>");
+    write(
+      "<body style='background-color: rgb(189, 245, 245); font-weight: bold;'>"
+    );
+    write("Name: " + name + "<br><br>");
+    write("Email: " + email + "<br><br>");
+    write("Address: " + address + "<br><br>");
+    write("Round: " + round + "<br><br>");
+    write("Gender: " + gender + "<br><br>");
+    write("Subject: " + subject.join(", ") + "<br><br>");
+    write("</body></html>");
   }
 }
