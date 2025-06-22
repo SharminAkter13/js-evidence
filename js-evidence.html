@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object Oriented Form</title>
+    <style>
+      div {
+        background-color: #508c94;
+        width: 400px;
+        height: 540px;
+        padding: 10px;
+        margin: 20px auto;
+        border-radius: 10px;
+        font-weight: bold;
+      }
+
+      legend {
+        text-align: center;
+        font-size: 15pt;
+        font-weight: bold;
+        border: 3px solid rgb(220, 223, 230);
+      }
+
+      fieldset {
+        border-radius: 10px;
+        padding: 10px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="submit"],
+      textarea,
+      select {
+        width: 99%;
+        padding: 8px 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type="radio"],
+      input[type="checkbox"] {
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <form name="f" id="f">
+        <fieldset>
+          <legend>REGISTRATION FORM</legend>
+          Name: <br />
+          <input
+            type="text"
+            name="fname"
+            placeholder="please enter your name"
+          />
+          <br /><br />
+          Email: <br />
+          <input
+            type="text"
+            name="email"
+            placeholder="please enter your email"
+          />
+          <br /><br />
+          Address: <br />
+          <textarea
+            name="address"
+            placeholder="please enter your address"
+          ></textarea>
+          <br /><br />
+          Result: <br />
+          <select name="result" id="result">
+            <option value="A+">A+</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+          </select>
+          <br /><br />
+          Gender:
+          <input type="radio" name="gen" value="Male" />Male
+          <input type="radio" name="gen" value="Female" />Female
+          <input type="radio" name="gen" value="Others" />Others <br /><br />
+          Subject:
+          <input type="checkbox" name="sub" value="Bangla" />Bangla
+          <input type="checkbox" name="sub" value="English " />English
+
+          <input type="checkbox" name="sub" value="Math" />Math <br /><br />
+          <input
+            type="submit"
+            value="Submit"
+            name="sbutton"
+            style="
+              background-color: #0d6a6d;
+              color: rgb(241, 232, 232);
+              font-weight: bold;
+              border-radius: 5px;
+              padding: 8px 15px;
+              cursor: pointer;
+            "
+          />
+        </fieldset>
+      </form>
+    </div>
+    <script>
+      class FormDetails {
+        constructor(formInfo) {
+          for (let [name, value] of formInfo) {
+            this[name] = formInfo.getAll(name).join(", ");
+          }
+        }
+
+        getView() {
+          var view = "Name: " + this.fname + "<br>";
+          view += "Email: " + this.email + "<br>";
+          view += "Address: " + this.address + "<br>";
+          view += "Result: " + this.result + "<br>";
+          view += "Gender: " + this.gen + "<br>";
+          view += "Subject: " + this.sub + "<br>";
+          let show = window.open("", "", "width=400px, height=400px");
+          show.document.write(view);
+        }
+      }
+
+      f.onsubmit = async (e) => {
+        e.preventDefault();
+        form1 = document.querySelector("#f");
+        f_details = new FormData(form1);
+
+        frm = new FormDetails(f_details);
+        frm.getView();
+      };
+    </script>
+  </body>
+</html>
