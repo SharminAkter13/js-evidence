@@ -121,7 +121,13 @@
           view += "Gender: " + this.gen + "<br>";
           view += "Subject: " + this.sub + "<br>";
           let show = window.open("", "", "width=400px, height=400px");
-          show.document.write(view);
+          show.document.write(
+            view +
+              "<br>" +
+              "<input type='button' value='Close me' onclick='self.close();' />" +
+              "&nbsp;&nbsp;&nbsp;" +
+              "<input type='button' value='Print' onclick='self.print();' />"
+          );
         }
       }
 

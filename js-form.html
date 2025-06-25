@@ -112,7 +112,6 @@
             this[name] = formInfo.getAll(name).join(", ");
           }
         }
-
         getView() {
           var view = "Name: " + this.fname + "<br>";
           view += "Email: " + this.email + "<br>";
@@ -120,16 +119,21 @@
           view += "Result: " + this.result + "<br>";
           view += "Gender: " + this.gen + "<br>";
           view += "Subject: " + this.sub + "<br>";
-
           let show = window.open("", "", "width=400px,height=400px");
-          show.document.write(view);
+          show.document.write(
+            view +
+              "<br>" +
+              " <input type='button' value='Close' onclick='self.close();'>" +
+              "&nbsp;&nbsp;&nbsp;&nbsp;" +
+              " <input type='button' value='Print' onclick='self.print();'>"
+          );
         }
       }
 
       f.onsubmit = async (e) => {
+        e.preventDefault();
         form1 = document.querySelector("#f");
         f_details = new FormData(form1);
-
         frm = new FormDetails(f_details);
         frm.getView();
       };
