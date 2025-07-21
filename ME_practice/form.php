@@ -5,26 +5,32 @@ if(!isset($_SESSION['rename'])){
     exit;
 }
 require_once('student.php');
-if(isset($_POST['submit'])){
-    $id =$_POST['id'];
-    $name =$_POST['name'];
-    $email =$_POST['email'];
-    $batch =$_POST['batch'];
-    
-    if(!preg_match("/^[0-9+]{2,6}$/",$id)){
-        echo "ID is Invalid";
-    }
-    
-    if(!preg_match("/^[a-zA-Z0-9#%_\-\.]+[@][a-z]+[\.][a-z]{2,3}$/",$email)){
-        echo "Email is Invalid";
-    }
 
-    $student = new Student($id,$name,$email,$batch);
-    $student->dstore();
-    echo "<h3 style='color:green; text-align: center;'>Student Details Saved</h3>";
-}else{
+if (isset($_POST['submit'])) {
+    $id = $_POST['id'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $batch = $_POST['batch'];
+
+    $id_valid = preg_match("/^[0-9]{2,6}$/", $id);
+    $email_valid = preg_match("/^[a-zA-Z0-9_#%\-\.]+@[a-z]+\.[a-z]{2,3}$/", $email);
+
+    
+    if (!$id_valid && !$email_valid) {
+        echo "<p style='color:red;'>ID and Email are Invalid</p>";
+    } elseif (!$id_valid) {
+        echo "<p style='color:red;'>ID is Invalid</p>";
+    } elseif (!$email_valid) {
+        echo "<p style='color:red;'>Email is Invalid</p>";
+    } else {
+        $student = new Student($id, $name, $email, $batch);
+        $student->dstore();
+        echo "<h3 style='color:green; text-align: center;'>Student Details Saved</h3>";
+    }
+} else {
     echo "<h3 style='color:red; text-align: center;'>Student Data not found</h3>";
 }
+
 ?>
 
 
